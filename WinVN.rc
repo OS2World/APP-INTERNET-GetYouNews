@@ -1,0 +1,17 @@
+#include "WinVN.h"
+#include "gynplugin.h"
+#include "version.h"
+
+STRINGTABLE
+BEGIN
+  IDS_GYN, "GetYourNews"
+  IDS_GYN_TYPE "Multipart"
+  IDS_SUPPORT_FOR_1 "WinVM 0.99.9"
+  IDS_SUPPORT_FOR_2 ""
+  IDS_SUPPORT_FOR_3 ""
+  IDS_VERSION_MAJOR     VERSION_MAJOR
+  IDS_VERSION_MINOR     VERSION_MINOR
+  IDS_VERSION_INCENDENTAL       VERSION_INCENDENTAL
+END
+
+

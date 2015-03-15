@@ -1,0 +1,23 @@
+#include "ForteAgent.h"
+#include "gynplugin.h"
+#include "version.h"
+
+STRINGTABLE
+BEGIN
+  IDS_GYN, "GetYourNews"
+  IDS_GYN_TYPE "Multipart"
+  IDS_SUPPORT_FOR_1 "Forte Agent 2.0/32.640"
+  IDS_SUPPORT_FOR_2 "Forte Agent 1.93/32.576"
+  IDS_SUPPORT_FOR_3 "Forte Agent 1.92/32.570"
+  IDS_SUPPORT_FOR_4 "Forte Agent 1.91/32.564"
+  IDS_SUPPORT_FOR_5 "Forte Agent 1.9/32.560"
+  IDS_SUPPORT_FOR_6 "Forte Agent 1.8/32.548"
+  IDS_SUPPORT_FOR_7 "Forte Agent 1.7/32.534"
+  IDS_SUPPORT_FOR_8 "Forte Agent 1.7/32.532"
+  IDS_SUPPORT_FOR_9 ""
+  IDS_VERSION_MAJOR     VERSION_MAJOR
+  IDS_VERSION_MINOR     VERSION_MINOR
+  IDS_VERSION_INCENDENTAL       VERSION_INCENDENTAL
+END
+
+

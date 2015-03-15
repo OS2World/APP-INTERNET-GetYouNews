@@ -1,0 +1,5 @@
+#define VERSION_MAJOR "2"
+#define VERSION_MINOR "16"
+#define VERSION_TINY "2"
+#define VERSION_INCENDENTAL ".02"
+#define VERSION_DATE "May 06 2008"

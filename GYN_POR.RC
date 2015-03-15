@@ -1,0 +1,79 @@
+#include <os2.h>
+#include "gyn.rch"
+#include "gynplugin.h"
+#include "version.h"
+
+STRINGTABLE
+BEGIN
+  IDS_GYN_LIST, "Listando Grupos de Noticias"
+  IDS_GYN_ERROR_RECV, "Erro Recebido"
+  IDS_GYN_WELCOME_1, "\r\nGetYourNews - Vers√o %s.%s%s - Direitos Autorais %s\r\n"
+  IDS_GYN_WELCOME_2, "Utilidade - GYN {/U=(Nome do Utilizante) /P=(Senha)}\r\n"
+  IDS_GYN_WELCOME_3, "        {/LIST - Listar todos os novos grupos} \r\n"
+  IDS_GYN_WELCOME_4, "        {/LOGS - Criar Logos} \r\n"
+  IDS_GYN_WELCOME_5, "        (/CROSSPOSTSKIP - Excluir Envio de Menssagens Duplicadas)\r\n"
+  IDS_GYN_WELCOME_6, "        (/MAXCONNECTIONS=x - x = Numero de Conex’es)\r\n"
+  IDS_GYN_WELCOME_7, "          Usuario/Senha … Necess¡rio\r\n"
+  IDS_GYN_WELCOME_8, "           Se o login servidor de noticias assim requerer \r\n"
+  IDS_GYN_WELCOME_9, ""
+
+  /* this welcome list does go to 10, but I only use 6 lines */
+
+  IDS_GYN_CREATE_MSG_1, "N√O encontrou informac√o no server.\r\n"
+  IDS_GYN_CREATE_MSG_2, "Creac√o INI arquivo e comecar editar.\r\n"
+  IDS_GYN_CREATE_MSG_3, "Tudo depois de um espaco em branco sera ignorado\r\n"
+  IDS_GYN_CREATE_MSG_4, "Colocar seu endereco na primeira linha no servidor de noticias\r\n"
+  IDS_GYN_CREATE_MSG_5, "Qualquer endereco tem de comecar com '[SERVER']\r\n"
+  IDS_GYN_CREATE_MSG_6, "Listar grupos nas seguintes linhas, um grupo por linha\r\n"
+  IDS_GYN_CREATE_MSG_7, "Usuario/Senha … digitado  por comando de linha - GYN /U=XXXXXX /P=xxxxxxx\r\n"
+  IDS_GYN_CREATE_MSG_8, "Rapida ajuda … conseguida por comando de linha - GYN /?\r\n"
+  IDS_GYN_CREATE_MSG_9, "Voce pode remover estes comentarios\r\n"
+  IDS_GYN_CREATE_MSG_10, "Voce pode enviar e-mail at N_Woodruff@bellsouth.net\r\n"
+
+  IDS_GYN_SUPPORT, "Esta versao so suporta 99 grupos\r\n"
+  IDS_GYN_INI_FILE_ERROR, "Voce nao pode abrir NewsServer2.ini. Abortar\r\n"
+
+  IDS_GYN_DOS_CREATE_ERROR_8, "ERROR_NOT_ENOUGH_MEMORY"
+  IDS_GYN_DOS_CREATE_ERROR_95, "ERROR_INTERRUPT"
+  IDS_GYN_DOS_CREATE_ERROR_115, "ERROR_PROTECTION_VIOLATION"
+  IDS_GYN_DOS_CREATE_ERROR_164, "ERROR_MAX_THRDS_REACHED"
+
+  IDS_GYN_DISPLAY_FINISHED, "[%d;%dH%s Acabado %s[K"
+  IDS_GYN_DISPLAY_MAX_MEM, "[%d;%dHMax memoria livre - %ld  "
+
+  IDS_GYN_USERID_REQUIRED "Identidade do Usuario e necessario. Enter /U=xxxxxxx no comando de linha\r\n"
+  IDS_GYN_PASSWORD_REQUIRED, "Senha e necessario. Enter com /P=xxx comando de linha\r\n"
+  IDS_GYN_INVALID_PASSWORD, "Usuario ou Senha invalida digitada\r\n"
+
+  IDS_GYN_HEADER_ERROR_1, "Header %ld greater than alocated size of %ld"
+  IDS_GYN_HEADER_ERROR_2, "Header %ld greater than alocated size of %ld"
+  IDS_GYN_HEADER_ERROR_UNKNOWN, "Header %ld error # %ld"
+  IDS_GYN_BODY_ERROR_1, "Body %ld greater than alocated size of %ld"
+  IDS_GYN_BODY_ERROR_2, "[%d;%dHGreater than allocated size[K"
+
+  IDS_GYN_MESSAGE_EXPIRED, "Conteudo da Mensagem nao existe mais"
+  IDS_GYN_BAD_POSTER_MESSAGE, "[%d;%dHIgnorar mensagens corruptas[K"
+  IDS_GYN_NO_FREE_SPACE, "[%d;%dHSem espaco livre, %8.2f[K"
+  IDS_GYN_SEND_ERROR, "[%d;%dHErro no envio"
+  IDS_GYN_ERROR_CONNECT, "[%d;%dHErro . %d conectado no Server"
+  IDS_GYN_AVAILABLE, "[%d;%dH%ld disponivel, e necessario %ld[K"
+  IDS_GYN_SYSTEM_READ, "[%d;%dHErro no sistema de leitura da memoria[K"
+  IDS_GYN_SLEEP_SECONDS_1, "[%d;%dHPausa por %d segundo[K"
+  IDS_GYN_SLEEP_SECONDS_MANY, "[%d;%dHPausa por %d segundos[K"
+  IDS_GYN_SLEEP_MINUTES_1, "[%d;%dHPausa por %d minuto[K"
+  IDS_GYN_SLEEP_MINUTES_MANY, "[%d;%dHPausa por %d minutos[K"
+  IDS_GYN_SLEEP_HOURS_1, "[%d;%dHPausa por %d hora[K"
+  IDS_GYN_SLEEP_HOURS_MANY, "[%d;%dHPausa por %d horas[K"
+  IDS_GYN_WAITING_CONNECTION, "[%d;%dHAguardando a conexao[K"
+  IDS_GYN_TIMEOUT_IN, "[%d;%dH[1m[31mTempo esgotado - %d[K[0m[37m"
+
+
+  IDS_GYN_GETHOSTBYNAME_FAILED, "Gethostbyname falha por %s\n"
+  IDS_GYN_FINISHED, "Acabado"
+
+  IDS_GYN_LOAD_MULTIPART, "Carregando Multipart mensagem apoiada pelo programa\r\n"
+  IDS_GYN_LOAD_SUPPORT, "Carregando apoio por\r\n"
+  IDS_GYN_LOAD_DECODE, "Carregando e decodificando apoio por\r\n"
+END
+
+

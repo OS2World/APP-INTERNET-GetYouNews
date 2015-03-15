@@ -1,0 +1,20 @@
+#include "ForteFreeAgent.h"
+#include "gynplugin.h"
+#include "version.h"
+
+STRINGTABLE
+BEGIN
+  IDS_GYN, "GetYourNews"
+  IDS_GYN_TYPE "Multipart"
+  IDS_SUPPORT_FOR_1 "Forte Free Agent 1.1"
+  IDS_SUPPORT_FOR_2 "Forte Free Agent 1.21"
+  IDS_SUPPORT_FOR_3 "Forte Free Agent 1.92/32.572"
+  IDS_SUPPORT_FOR_4 "Forte Free Agent 1.93/32.576 English (American)"
+  IDS_SUPPORT_FOR_5 "Forte Free Agent 2.0/32.652"
+  IDS_SUPPORT_FOR_6 ""
+  IDS_VERSION_MAJOR     VERSION_MAJOR
+  IDS_VERSION_MINOR     VERSION_MINOR
+  IDS_VERSION_INCENDENTAL       VERSION_INCENDENTAL
+END
+
+

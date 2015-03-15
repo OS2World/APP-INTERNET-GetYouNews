@@ -1,0 +1,80 @@
+#include <os2.h>
+
+#include "gyn.rch"
+#include "gynplugin.h"
+#include "version.h"
+
+STRINGTABLE
+BEGIN
+  IDS_GYN_LIST, "Newsgroups auflisten "
+  IDS_GYN_ERROR_RECV, "Fehler in recv"
+  IDS_GYN_WELCOME_1, "\r\nGetYourNews - Version %s.%s%s - Copywrite %s\r\n"
+  IDS_GYN_WELCOME_2, "ErklÑrung - GYN {/U=(Benutzername) /P=(Kennwort)}\r\n"
+  IDS_GYN_WELCOME_3, "        {/LIST - Newsgroups auflisten} \r\n"
+  IDS_GYN_WELCOME_4, "        {/LOGS - Logs erstellen} \r\n"
+  IDS_GYN_WELCOME_5, "        (/CROSSPOSTSKIP - Skip Cross posted messages)\r\n"
+  IDS_GYN_WELCOME_6, "        (/MAXCONNECTIONS=x - x = number of connections)\r\n"
+  IDS_GYN_WELCOME_7, "          Benutzername/Kennwort wird nur benîtigt\r\n"
+  IDS_GYN_WELCOME_8, "              wenn der Server ein Login erfordert\r\n"
+  IDS_GYN_WELCOME_9, ""
+
+  /* this welcome list does go to 10, but I only use 6 lines */
+
+  IDS_GYN_CREATE_MSG_1, "Keine Information zum Server gefunden.\r\n"
+  IDS_GYN_CREATE_MSG_2, "INI Datei erstellen und Editor starten\r\n"
+  IDS_GYN_CREATE_MSG_3, "Alles nach einer leeren Zeile wird ignoriert\r\n"
+  IDS_GYN_CREATE_MSG_4, "Die Adresse des Newsservers in die erste Zeile schreiben\r\n"
+  IDS_GYN_CREATE_MSG_5, "Alle nachfolgenden Newsserver beginnen mit '[SERVER']\r\n"
+  IDS_GYN_CREATE_MSG_6, "Gruppen in den nachfolgenden Zeilen angeben, eine Gruppe pro Zeile\r\n"
+  IDS_GYN_CREATE_MSG_7, "Benutzername/Kennwort auf der Kommandozeile angeben - GYN /U=XXXXXX /P=xxxxxxx\r\n"
+  IDS_GYN_CREATE_MSG_8, "Kurze Hilfe ist auf der Kommandozeile verfÅgbar - GYN /?\r\n"
+  IDS_GYN_CREATE_MSG_9, "Dieser Kommentar kann entfernt werden\r\n"
+  IDS_GYN_CREATE_MSG_10, "E-Mail an N_Woodruff@bellsouth.net mîglich\r\n"
+
+  IDS_GYN_SUPPORT, "Diese Version unterstÅtzt nur 99 Gruppen\r\n"
+  IDS_GYN_INI_FILE_ERROR, "Konnte NewsServer2.ini nicht îffnen. Abbruch\r\n"
+
+  IDS_GYN_DOS_CREATE_ERROR_8, "ERROR_NOT_ENOUGH_MEMORY"
+  IDS_GYN_DOS_CREATE_ERROR_95, "ERROR_INTERRUPT"
+  IDS_GYN_DOS_CREATE_ERROR_115, "ERROR_PROTECTION_VIOLATION"
+  IDS_GYN_DOS_CREATE_ERROR_164, "ERROR_MAX_THRDS_REACHED"
+
+  IDS_GYN_DISPLAY_FINISHED, "[%d;%dH%s Beendet %s[K"
+  IDS_GYN_DISPLAY_MAX_MEM, "[%d;%dHMax freier Speicher - %ld  "
+
+  IDS_GYN_USERID_REQUIRED "UserID required. Use /U=xxxxxxx on the command line\r\n"
+  IDS_GYN_PASSWORD_REQUIRED, "Kennwort erforderlich. Mit /P=xxx auf der Kommandozeile angeben\r\n"
+  IDS_GYN_INVALID_PASSWORD, "UngÅltige Benutzername/Kennwort Kombination\r\n"
+
+  IDS_GYN_HEADER_ERROR_1, "Header %ld gî·er als zugeteilter Speicher %ld"
+  IDS_GYN_HEADER_ERROR_2, "Header %ld gî·er als zugeteilter Speicher %ld"
+  IDS_GYN_HEADER_ERROR_UNKNOWN, "Header %ld Fehler # %ld"
+  IDS_GYN_BODY_ERROR_1, "Body %ld gî·er als zugeteilter Speicher %ld"
+  IDS_GYN_BODY_ERROR_2, "[%d;%dGî·er als zugeteilter Speicher[K"
+
+  IDS_GYN_MESSAGE_EXPIRED, "Nachricht abgelaufen"
+  IDS_GYN_BAD_POSTER_MESSAGE, "[%d;%dHSöberspringe Nachricht von fragwÅrdigem Absender[K"
+  IDS_GYN_NO_FREE_SPACE, "[%d;%dHNicht genug freier Speicher, %8.2f[K"
+  IDS_GYN_SEND_ERROR, "[%d;%dHFehler beim Senden"
+  IDS_GYN_ERROR_CONNECT, "[%d;%dHFehler %d beim Verbinden zum Server"
+  IDS_GYN_AVAILABLE, "[%d;%dH%ld verfÅgbar, benîtigt %ld[K"
+  IDS_GYN_SYSTEM_READ, "[%d;%dHFehler beim Lesen des Speichers[K"
+  IDS_GYN_SLEEP_SECONDS_1, "[%d;%dHWarte fÅr %d Sekunde[K"
+  IDS_GYN_SLEEP_SECONDS_MANY, "[%d;%dHWarte fÅr %d Sekunden[K"
+  IDS_GYN_SLEEP_MINUTES_1, "[%d;%dHWarte fÅr %d Minute[K"
+  IDS_GYN_SLEEP_MINUTES_MANY, "[%d;%dHWarte fÅr %d Minuten[K"
+  IDS_GYN_SLEEP_HOURS_1, "[%d;%dHWarte fÅr %d Stunde[K"
+  IDS_GYN_SLEEP_HOURS_MANY, "[%d;%dHWarte fÅr %d Stunden[K"
+  IDS_GYN_WAITING_CONNECTION, "[%d;%dHAufwartung eines Anschlu·es[K"
+  IDS_GYN_TIMEOUT_IN, "[%d;%dH[1m[31mAbschaltung innen - &d[K[0m[37m"
+
+  IDS_GYN_GETHOSTBYNAME_FAILED, "Gethostbyname schlug fÅr %s fehl\n"
+  IDS_GYN_FINISHED, "Beendet"
+
+  IDS_GYN_LOAD_MULTIPART, "Lade Multipart UnterstÅtzung\r\n"
+  IDS_GYN_LOAD_SUPPORT, "Lade UnterstÅtzung fÅr\r\n"
+  IDS_GYN_LOAD_DECODE, "Lade EntschlÅsselungs-UnterstÅtzung fÅr\r\n"
+END
+
+
+

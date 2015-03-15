@@ -1,0 +1,8 @@
+LIBRARY
+CODE            PRELOAD MOVEABLE
+DATA            LOADONCALL MOVEABLE MULTIPLE READWRITE
+HEAPSIZE        204800
+STACKSIZE       204800
+EXPORTS         CheckForMultipart                @1
+
+

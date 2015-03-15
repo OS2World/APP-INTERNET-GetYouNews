@@ -1,0 +1,18 @@
+#include "SMRUsenet.h"
+#include "gynplugin.h"
+#include "version.h"
+
+STRINGTABLE
+BEGIN
+  IDS_GYN, "GetYourNews"
+  IDS_GYN_TYPE "Multipart"
+  IDS_SUPPORT_FOR_1 "Xnews/5.03.24"
+  IDS_SUPPORT_FOR_2 "Xnews/5.04.25"
+  IDS_SUPPORT_FOR_3 "Xnews/06.01.08b"
+  IDS_SUPPORT_FOR_4 ""
+  IDS_VERSION_MAJOR     VERSION_MAJOR
+  IDS_VERSION_MINOR     VERSION_MINOR
+  IDS_VERSION_INCENDENTAL       VERSION_INCENDENTAL
+END
+
+

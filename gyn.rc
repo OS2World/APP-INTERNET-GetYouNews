@@ -1,0 +1,79 @@
+#include <os2.h>
+#include "gyn.rch"
+#include "gynplugin.h"
+#include "version.h"
+
+STRINGTABLE
+BEGIN
+  IDS_GYN_LIST, "Listing News groups "
+  IDS_GYN_ERROR_RECV, "Error in recv"
+  IDS_GYN_WELCOME_1, "\r\nGetYourNews - Version %s.%s%s - Copywrite %s\r\n"
+  IDS_GYN_WELCOME_2, "Usage - GYN {/U=(username) /P=(password)}\r\n"
+  IDS_GYN_WELCOME_3, "        {/LIST - List all newsgroups} \r\n"
+  IDS_GYN_WELCOME_4, "        {/LOGS - Create Logs} \r\n"
+  IDS_GYN_WELCOME_5, "        (/CROSSPOSTSKIP - Skip Cross posted messages)\r\n"
+  IDS_GYN_WELCOME_6, "        (/MAXCONNECTIONS=x - x = number of connections)\r\n"
+  IDS_GYN_WELCOME_7, "          Username/Password only required\r\n"
+  IDS_GYN_WELCOME_8, "            if newsserver login is required\r\n"
+  IDS_GYN_WELCOME_9, ""
+
+  /* this welcome list does go to 10, but I only use 6 lines */
+
+  IDS_GYN_CREATE_MSG_1, "No server information found.\r\n"
+  IDS_GYN_CREATE_MSG_2, "Creating INI file and starting editor\r\n"
+  IDS_GYN_CREATE_MSG_3, "Anything after a blank line will be ignored\r\n"
+  IDS_GYN_CREATE_MSG_4, "Put your newsserver address as the first line\r\n"
+  IDS_GYN_CREATE_MSG_5, "Any following newsservers prompt with '[SERVER']\r\n"
+  IDS_GYN_CREATE_MSG_6, "List groups on the following lines, one group per line\r\n"
+  IDS_GYN_CREATE_MSG_7, "Userid/Password is supplied by command line - GYN /U=XXXXXX /P=xxxxxxx\r\n"
+  IDS_GYN_CREATE_MSG_8, "Simple help is available by command line - GYN /?\r\n"
+  IDS_GYN_CREATE_MSG_9, "Feel free to remove these comment lines\r\n"
+  IDS_GYN_CREATE_MSG_10, "You can send me e-mail at N_Woodruff@bellsouth.net\r\n"
+
+  IDS_GYN_SUPPORT, "This version only supports up to 99 groups\r\n"
+  IDS_GYN_INI_FILE_ERROR, "Could not open NewsServer2.ini. Aborting\r\n"
+
+  IDS_GYN_DOS_CREATE_ERROR_8, "ERROR_NOT_ENOUGH_MEMORY"
+  IDS_GYN_DOS_CREATE_ERROR_95, "ERROR_INTERRUPT"
+  IDS_GYN_DOS_CREATE_ERROR_115, "ERROR_PROTECTION_VIOLATION"
+  IDS_GYN_DOS_CREATE_ERROR_164, "ERROR_MAX_THRDS_REACHED"
+
+  IDS_GYN_DISPLAY_FINISHED, "[%d;%dH%s Finished %s[K"
+  IDS_GYN_DISPLAY_MAX_MEM, "[%d;%dHMax free mem - %ld  "
+
+  IDS_GYN_USERID_REQUIRED "UserID required. Use /U=xxxxxxx on the command line\r\n"
+  IDS_GYN_PASSWORD_REQUIRED, "Password required. Use the /P=xxx on command line\r\n"
+  IDS_GYN_INVALID_PASSWORD, "Invalid UserID/Password supplied\r\n"
+
+  IDS_GYN_HEADER_ERROR_1, "Header %ld greater than alocated size of %ld"
+  IDS_GYN_HEADER_ERROR_2, "Header %ld greater than alocated size of %ld"
+  IDS_GYN_HEADER_ERROR_UNKNOWN, "Header %ld error # %ld"
+  IDS_GYN_BODY_ERROR_1, "Body %ld greater than alocated size of %ld"
+  IDS_GYN_BODY_ERROR_2, "[%d;%dHGreater than allocated size[K"
+
+  IDS_GYN_MESSAGE_EXPIRED, "Message body Expired"
+  IDS_GYN_BAD_POSTER_MESSAGE, "[%d;%dHSkipping Bad Poster Message[K"
+  IDS_GYN_NO_FREE_SPACE, "[%d;%dHNot enough free space, %8.2f[K"
+  IDS_GYN_SEND_ERROR, "[%d;%dHSend Error"
+  IDS_GYN_ERROR_CONNECT, "[%d;%dHError %d Connect to Server"
+  IDS_GYN_AVAILABLE, "[%d;%dH%ld avail, Need %ld[K"
+  IDS_GYN_SYSTEM_READ, "[%d;%dHError on system read memory[K"
+  IDS_GYN_SLEEP_SECONDS_1, "[%d;%dHSleeping for %d second[K"
+  IDS_GYN_SLEEP_SECONDS_MANY, "[%d;%dHSleeping for %d seconds[K"
+  IDS_GYN_SLEEP_MINUTES_1, "[%d;%dHSleeping for %d minute[K"
+  IDS_GYN_SLEEP_MINUTES_MANY, "[%d;%dHSleeping for %d minutes[K"
+  IDS_GYN_SLEEP_HOURS_1, "[%d;%dHSleeping for %d hour[K"
+  IDS_GYN_SLEEP_HOURS_MANY, "[%d;%dHSleeping for %d hours[K"
+  IDS_GYN_WAITING_CONNECTION, "[%d;%dHWaiting for a connection[K"
+  IDS_GYN_TIMEOUT_IN, "[%d;%dH[1m[31mTimeout in - %d[K[0m[37m"
+
+
+  IDS_GYN_GETHOSTBYNAME_FAILED, "Gethostbyname failed for %s\n"
+  IDS_GYN_FINISHED, "Finished"
+
+  IDS_GYN_LOAD_MULTIPART, "Loading Multipart message support for program\r\n"
+  IDS_GYN_LOAD_SUPPORT, "Loading support for\r\n"
+  IDS_GYN_LOAD_DECODE, "Loading Decode support for\r\n"
+END
+
+

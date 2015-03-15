@@ -1,0 +1,16 @@
+#include "UUCode.h"
+#include "gynplugin.h"
+#include "version.h"
+
+STRINGTABLE
+BEGIN
+  IDS_GYN, "GetYourNews"
+  IDS_GYN_TYPE "Decoder"
+  IDS_SUPPORT_FOR_1 "Base64"
+  IDS_SUPPORT_FOR_2 ""
+  IDS_VERSION_MAJOR     VERSION_MAJOR
+  IDS_VERSION_MINOR     VERSION_MINOR
+  IDS_VERSION_INCENDENTAL       VERSION_INCENDENTAL
+END
+
+
